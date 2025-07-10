@@ -1,0 +1,16 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+LAYOUT_WITH_LEGEND()
+title Container diagram for Pharmacy Finder process
+System_Boundary(c1, " My Company ") {
+Container(PharmacyFinder, "Pharmacy Finder Service", "Worker", "Retrieves and transforms the pharmacy finder dataset")
+Container(OrganizationAPI, "Organization Service", "API", "Provides access to Pharmacy DTOs")
+Container(E3M, "Mobile App", "C#, Xamarin", "Displays the pharmacy hours")
+ContainerDb(database, "Database", "SQL Server", "Stores pharmacy data")
+}
+System_Ext(Company, " Company ", " Company Pharmacy")
+Rel(E3M, OrganizationAPI, "Test")
+Rel(OrganizationAPI, database, "Retrieves pharmacy data from tables")
+Rel(PharmacyFinder, database, "Writes to tables")
+Rel_Back(Company, PharmacyFinder, "Retrieve file from SFTP")
+@enduml

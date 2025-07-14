@@ -1,0 +1,10 @@
+== Section Title
+
+* A list item
+* Another list item
+
+=== Example code section
+[,ruby]
+----
+puts 'Hello, World!'
+----

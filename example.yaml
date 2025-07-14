@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  title: Weather Report API
+  description: An API to fetch weather information for a given city
+  version: 1.0.0
+servers:
+  - url: https://api.weatherreport.com/v1
+    description: Production server
+
+paths:
+  /weather:
+    get:
+      summary: Get weather information for a city
+      description: Returns current weather data for a specified city
+      parameters:
+        - in: query
+          name: city
+          required: true
+          description: Name of the city to get weather information for
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with weather information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  city:
+                    type: string
+                    description: Name of the city
+                    example: New York
+                  temperature:
+                    type: number
+                    format: float
+                    description: Current temperature in Celsius
+                    example: 22.5
+                  description:
+                    type: string
+                    description: Weather condition description
+                    example: Clear sky
+                  humidity:
+                    type: integer
+                    format: int32
+                    description: Humidity percentage
+                    example: 60
+                  wind_speed:
+                    type: number
+                    format: float
+                    description: Wind speed in meters per second
+                    example: 5.1
+        '400':
+          description: Bad request, possibly due to missing or invalid city parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                    example: "Missing or invalid 'city' parameter"
+        '404':
+          description: City not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                    example: "City not found"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                    example: "An unexpected error occurred"
+
+components:
+  schemas:
+    Weather:
+      type: object
+      properties:
+        city:
+          type: string
+        temperature:
+          type: number
+          format: float
+        description:
+          type: string
+        humidity:
+          type: integer
+          format: int32
+        wind_speed:
+          type: number
+          format: float
+
+tags:
+  - name: Weather
+    description: Operations related to weather information

@@ -1,0 +1,3773 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "https://ap.app.qa1.pl",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Web API Definition",
+      "description": "Controller for managing web API definitions"
+    },
+    {
+      "name": "Web API Approval",
+      "description": "Controller for managing web API approvals"
+    },
+    {
+      "name": "Web API Condition",
+      "description": "Controller for managing web API conditions"
+    }
+  ],
+  "paths": {
+    "/webapi/v2/definitions/{definitionId}": {
+      "get": {
+        "tags": [
+          "Web API Definition"
+        ],
+        "summary": "Get an approval definition by ID",
+        "description": "Retrieves an approval definition using its unique ID.",
+        "operationId": "get",
+        "parameters": [
+          {
+            "name": "definitionId",
+            "in": "path",
+            "description": "ID of the definition",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Approval definition retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Definition"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access to the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Approval definition not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Web API Definition"
+        ],
+        "summary": "Update a definition",
+        "description": "Updates an existing definition by its ID.",
+        "operationId": "update",
+        "parameters": [
+          {
+            "name": "definitionId",
+            "in": "path",
+            "description": "ID of the definition to be updated.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The updated definition details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Definition"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The updated definition.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Definition"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access to the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Definition not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Web API Definition"
+        ],
+        "summary": "Delete a definition",
+        "description": "Delete a specific definition by its ID.",
+        "operationId": "delete",
+        "parameters": [
+          {
+            "name": "definitionId",
+            "in": "path",
+            "description": "ID of the definition to be deleted",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Definition successfully deleted."
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access to the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Definition not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webapi/v2/conditions/{conditionId}": {
+      "get": {
+        "tags": [
+          "Web API Condition"
+        ],
+        "summary": "Retrieve a specific condition",
+        "description": "Fetches the condition details by its unique identifier.",
+        "operationId": "get_1",
+        "parameters": [
+          {
+            "name": "conditionId",
+            "in": "path",
+            "description": "Unique identifier of the condition.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Condition retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Condition"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access to the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Condition not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Web API Condition"
+        ],
+        "summary": "Update an existing condition by its ID.",
+        "description": "Updates the specified condition with new details. The condition must exist and be active.",
+        "operationId": "update_1",
+        "parameters": [
+          {
+            "name": "conditionId",
+            "in": "path",
+            "description": "Unique identifier of the condition.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The updated condition details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConditionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Condition updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Condition"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access to the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Condition not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Web API Condition"
+        ],
+        "summary": "Archive a specific condition",
+        "description": "Archives the specified condition by its unique identifier. The condition must exist and be active.",
+        "operationId": "delete_1",
+        "parameters": [
+          {
+            "name": "conditionId",
+            "in": "path",
+            "description": "ID of the condition to be archived",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Condition archived successfully. No content is returned."
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access to the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Condition not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webapi/v2/definitions": {
+      "get": {
+        "tags": [
+          "Web API Definition"
+        ],
+        "summary": "Retrieve a list of definitions",
+        "description": "Fetches a paginated list of definitions based on matching the search criteria, sorting, and filtering.",
+        "operationId": "list",
+        "parameters": [
+          {
+            "name": "collection",
+            "in": "query",
+            "description": "The project ID or key for Jira app, space ID for Confluence app. Used to filter definitions.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeGlobal",
+            "in": "query",
+            "description": "Include global definitions. Default: true.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Filter by query string",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Field to sort by",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "ID",
+              "enum": [
+                "ID",
+                "NAME"
+              ]
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Sort order",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "ASC",
+              "enum": [
+                "ASC",
+                "DESC"
+              ]
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for pagination",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of results to return",
+            "required": false,
+            "schema": {
+              "maximum": 200,
+              "minimum": 1,
+              "type": "integer",
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of definitions matching the search criteria.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DefinitionListResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Web API Definition"
+        ],
+        "summary": "Create a new approval definition",
+        "description": "Creates a new approval definition for the provided data.",
+        "operationId": "create",
+        "parameters": [
+          {
+            "name": "definition",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Definition"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Approval definition created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Definition"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webapi/v2/conditions": {
+      "get": {
+        "tags": [
+          "Web API Condition"
+        ],
+        "summary": "List conditions",
+        "description": "Retrieves a paginated list of conditions with optional filtering, sorting, and pagination.",
+        "operationId": "list_1",
+        "parameters": [
+          {
+            "name": "condition-ids",
+            "in": "query",
+            "description": "Filter conditions by id's.",
+            "required": false,
+            "schema": {
+              "type": "array"
+            }
+          },
+          {
+            "name": "collection",
+            "in": "query",
+            "description": "The project ID or key. Used to filter conditions",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "showOnlyActive",
+            "in": "query",
+            "description": "Show only active conditions. Defaults to true.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Field to sort by",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "ID",
+              "enum": [
+                "ID",
+                "NAME",
+                "EVALUATOR_TYPE",
+                "USER_ID",
+                "FIELD_ID",
+                "COLLECTION_ID"
+              ]
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Sort order (ASC or DESC)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "ASC",
+              "enum": [
+                "ASC",
+                "DESC"
+              ]
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for pagination",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of results to return",
+            "required": false,
+            "schema": {
+              "maximum": 200,
+              "minimum": 1,
+              "type": "integer",
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the list of conditions.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConditionListResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Web API Condition"
+        ],
+        "summary": "Create a new condition",
+        "description": "Creates a new condition based on the provided details.",
+        "operationId": "create_1",
+        "requestBody": {
+          "description": "Condition object to be created",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConditionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Condition created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Condition"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webapi/v2/approvals": {
+      "get": {
+        "tags": [
+          "Web API Approval"
+        ],
+        "summary": "List approval paths",
+        "description": "Fetches a list of approval paths filtered by optional parameters like reference, definition ID, collection ID, and status. Results can be sorted and paginated.",
+        "operationId": "list_2",
+        "parameters": [
+          {
+            "name": "reference",
+            "in": "query",
+            "description": "Filter by reference (work item key for Jira/page id for Confluence)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "definitionId",
+            "in": "query",
+            "description": "Filter by definition ID",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "collectionId",
+            "in": "query",
+            "description": "Filter by collection ID",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Filter by status. ",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "ANY",
+              "enum": [
+                "ONGOING",
+                "APPROVED",
+                "REJECTED",
+                "ARCHIVED",
+                "EXPIRED",
+                "OUTDATED",
+                "NOT_ARCHIVED_AND_NOT_OUTDATED_AND_NOT_EXPIRED",
+                "ANY"
+              ]
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Field to sort by.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "ID",
+              "enum": [
+                "ID",
+                "DEFINITION_NAME",
+                "STATUS",
+                "SUBJECT_ID",
+                "ORIGINATOR_ID",
+                "START_TIME",
+                "EXPIRATION"
+              ]
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Sort order.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "ASC",
+              "enum": [
+                "ASC",
+                "DESC"
+              ]
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for pagination. Default is 0.",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of results to return. Default is 100.",
+            "required": false,
+            "schema": {
+              "maximum": 200,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched the approval list",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApprovalListResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Web API Approval"
+        ],
+        "summary": "Create an approval path",
+        "description": "Creates a new approval path based on the provided request body.",
+        "operationId": "create_2",
+        "requestBody": {
+          "description": "Details for creating a new approval path.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateApprovalRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Approval path created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Approval"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input or validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webapi/v2/approvals/{approvalId}": {
+      "get": {
+        "tags": [
+          "Web API Approval"
+        ],
+        "summary": "Get an approval path by ID",
+        "description": "Retrieves an approval path using its unique ID.",
+        "operationId": "get_2",
+        "parameters": [
+          {
+            "name": "approvalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Approval path retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Approval"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access to the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Approval path not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Web API Approval"
+        ],
+        "summary": "Delete an approval",
+        "description": "Delete a specific approvals by its ID.",
+        "operationId": "delete_2",
+        "parameters": [
+          {
+            "name": "approvalId",
+            "in": "path",
+            "description": "ID of the definition to be deleted",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "reference",
+            "in": "query",
+            "description": "Reference (work item key for Jira version page id for Confluence) to specify the approval path to delete",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "createComment",
+            "in": "query",
+            "description": "Indicates whether a comment should be created on approval during deletion",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "User ID used to change approval path deletion operation performer origin. Option must be activated in API Key.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Definition successfully deleted.",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Approval"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized access.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden access to the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Approval not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AutomationAction": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of the automation action",
+            "enum": [
+              "CHANGE_STATUS",
+              "CHANGE_USER_FIELD",
+              "ADD_COMMENT",
+              "ADD_REMOVE_LABELS",
+              "SET_ENTITY_PROPERTY"
+            ]
+          },
+          "statusId": {
+            "type": "string",
+            "description": "Status ID associated with the automation action"
+          },
+          "statusName": {
+            "type": "string",
+            "description": "Status name associated with the automation action"
+          },
+          "customStatusName": {
+            "type": "string",
+            "description": "Custom status name set by the automation"
+          },
+          "customStatusUserId": {
+            "type": "string",
+            "description": "User ID of the person who set the custom status"
+          },
+          "customStatusNameByUser": {
+            "type": "string",
+            "description": "Display name of the user who set the custom status"
+          },
+          "newCustomStatusColorHex": {
+            "type": "string",
+            "description": "Hexadecimal color code for the custom status"
+          },
+          "fieldId": {
+            "type": "string",
+            "description": "Field ID affected by the automation action"
+          },
+          "userId": {
+            "type": "string",
+            "description": "User ID involved in the automation action"
+          },
+          "commentBody": {
+            "type": "string",
+            "description": "Comment body associated with the automation action"
+          },
+          "labelsToAdd": {
+            "type": "array",
+            "description": "Labels to be added as part of the automation action",
+            "items": {
+              "type": "string",
+              "description": "Labels to be added as part of the automation action"
+            }
+          },
+          "labelsToRemove": {
+            "type": "array",
+            "description": "Labels to be removed as part of the automation action",
+            "items": {
+              "type": "string",
+              "description": "Labels to be removed as part of the automation action"
+            }
+          },
+          "entityPropertyKey": {
+            "type": "string",
+            "description": "Key for the entity property affected by the automation action"
+          },
+          "entityPropertyValue": {
+            "type": "string",
+            "description": "Value for the entity property affected by the automation action"
+          }
+        },
+        "description": "Represents an automation action detailing its type, status, and associated data."
+      },
+      "AutomationDefinitionStep": {
+        "required": [
+          "action",
+          "name",
+          "status",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is AUTOMATION",
+            "default": "AUTOMATION",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the automation step"
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "automationAction": {
+            "$ref": "#/components/schemas/AutomationAction"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action associated with this step. Allowed value NOTIFICATION",
+            "default": "NOTIFICATION",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          }
+        },
+        "description": "Represents an automation step in the approval definition, containing details about the automation action and conditions."
+      },
+      "Definition": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the approval definition. Should be empty when creating a definition.",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the approval definition."
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the approval definition."
+          },
+          "collectionId": {
+            "type": "string",
+            "description": "Project ID associated with the approval."
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DefinitionStep"
+            }
+          },
+          "successSteps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DefinitionPostStep"
+            }
+          },
+          "rejectionSteps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DefinitionPostStep"
+            }
+          },
+          "automaticRemindersEnabled": {
+            "type": "boolean",
+            "description": "Indicates whether automatic reminders are enabled."
+          },
+          "automaticRemindersIntervalCount": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "Interval count for automatic reminders.",
+            "format": "int32"
+          },
+          "automaticRemindersIntervalUnit": {
+            "type": "string",
+            "description": "Unit for the automatic reminders interval.",
+            "enum": [
+              "HOUR",
+              "DAY",
+              "WEEK"
+            ]
+          },
+          "availableForJSMCustomers": {
+            "type": "boolean",
+            "description": "Indicates if the approval is viewable by JSM customers."
+          },
+          "canBeStartedByJSMCustomers": {
+            "type": "boolean",
+            "description": "Indicates if the approval can be started by JSM customers."
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the definition condition",
+            "format": "int32"
+          },
+          "abstainActionEnabled": {
+            "type": "boolean",
+            "description": "Indicates whether the abstain action is enabled"
+          },
+          "jsmPublicCommentsEnabled": {
+            "type": "boolean",
+            "description": "Indicates if the Approval Path comments are visible to JSM customers."
+          },
+          "expirationSettings": {
+            "$ref": "#/components/schemas/ExpirationSettings"
+          },
+          "workItemTypesIds": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "Ids of work items types associated with the approval.",
+            "items": {
+              "type": "string",
+              "description": "Ids of work items types associated with the approval."
+            }
+          }
+        },
+        "description": "Data transfer object for creating or updating an approval definition."
+      },
+      "DefinitionPostStep": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "description": "Steps involved in the approval process.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "AUTOMATION": "#/components/schemas/AutomationDefinitionStep",
+            "HTTP": "#/components/schemas/WebhookDefinitionStep"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AutomationDefinitionStep"
+          },
+          {
+            "$ref": "#/components/schemas/WebhookDefinitionStep"
+          }
+        ]
+      },
+      "DefinitionStep": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "description": "Steps involved in the approval process.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "USER": "#/components/schemas/UserDefinitionStep",
+            "GROUP": "#/components/schemas/GroupDefinitionStep",
+            "VOTE": "#/components/schemas/VoteDefinitionStep",
+            "EMAIL": "#/components/schemas/EmailDefinitionStep",
+            "AUTOMATION": "#/components/schemas/AutomationDefinitionStep",
+            "HTTP": "#/components/schemas/WebhookDefinitionStep",
+            "ISSUE_USER_FIELD": "#/components/schemas/IssueUserDefinitionStep",
+            "ISSUE_GROUP_FIELD": "#/components/schemas/IssueGroupDefinitionStep",
+            "ISSUE_EMAIL_FIELD": "#/components/schemas/IssueEmailDefinitionStep"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UserDefinitionStep"
+          },
+          {
+            "$ref": "#/components/schemas/GroupDefinitionStep"
+          },
+          {
+            "$ref": "#/components/schemas/VoteDefinitionStep"
+          },
+          {
+            "$ref": "#/components/schemas/EmailDefinitionStep"
+          },
+          {
+            "$ref": "#/components/schemas/AutomationDefinitionStep"
+          },
+          {
+            "$ref": "#/components/schemas/WebhookDefinitionStep"
+          },
+          {
+            "$ref": "#/components/schemas/IssueUserDefinitionStep"
+          },
+          {
+            "$ref": "#/components/schemas/IssueGroupDefinitionStep"
+          },
+          {
+            "$ref": "#/components/schemas/IssueEmailDefinitionStep"
+          }
+        ]
+      },
+      "EmailDefinitionStep": {
+        "required": [
+          "action",
+          "email",
+          "issueWatchersNotification",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is EMAIL",
+            "default": "EMAIL",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "action": {
+            "type": "string",
+            "description": "Action available for the approver. Allowed values: APPROVAL, CONSENT, NOTIFICATION",
+            "default": "APPROVAL",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address associated with this step"
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "commentRequiredOnReject": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on rejection"
+          },
+          "commentRequiredOnApprove": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on approval"
+          },
+          "commentRequiredOnAbstain": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on abstain"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "default": "DISABLED",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          }
+        },
+        "description": "Represents an email step in the approval definition, containing details about the email, actions, and conditions."
+      },
+      "ExpirationSettings": {
+        "required": [
+          "defaultInterval",
+          "defaultUnit",
+          "expirationType"
+        ],
+        "type": "object",
+        "properties": {
+          "expirationType": {
+            "type": "string",
+            "description": "Indicates expiration type.",
+            "default": "OPTIONAL",
+            "enum": [
+              "OPTIONAL",
+              "REQUIRED",
+              "CUSTOM"
+            ]
+          },
+          "defaultInterval": {
+            "type": "integer",
+            "description": "Default interval count for expiration.",
+            "format": "int32",
+            "default": 1
+          },
+          "defaultUnit": {
+            "type": "string",
+            "description": "Default unit for the expiration.",
+            "default": "WEEK",
+            "enum": [
+              "HOUR",
+              "DAY",
+              "WEEK",
+              "MONTH",
+              "YEAR"
+            ]
+          },
+          "maxInterval": {
+            "type": "integer",
+            "description": "Interval count for expiration limit.",
+            "format": "int32",
+            "default": 1
+          },
+          "maxUnit": {
+            "type": "string",
+            "description": "Unit for the expiration limit.",
+            "default": "MONTH",
+            "enum": [
+              "HOUR",
+              "DAY",
+              "WEEK",
+              "MONTH",
+              "YEAR"
+            ]
+          }
+        },
+        "description": "Expiration settings"
+      },
+      "GroupDefinitionStep": {
+        "required": [
+          "action",
+          "displayName",
+          "groupId",
+          "issueWatchersNotification",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is GROUP",
+            "default": "GROUP",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "action": {
+            "type": "string",
+            "description": "Action available for the group members in this step. Allowed values: APPROVAL, CONSENT, NOTIFICATION",
+            "default": "APPROVAL",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "groupId": {
+            "type": "string",
+            "description": "ID of the group associated with this step"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the group",
+            "readOnly": true
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "commentRequiredOnReject": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on rejection"
+          },
+          "commentRequiredOnApprove": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on approval"
+          },
+          "commentRequiredOnAbstain": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on abstain"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "default": "DISABLED",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "approvalCreatorExcluded": {
+            "type": "boolean",
+            "description": "Indicates if the approval creator is excluded from this step"
+          },
+          "skipFromApprovalWhenEmpty": {
+            "type": "boolean",
+            "description": "Indicates if this step is skipped when no approvers are present"
+          },
+          "requiredVotes": {
+            "type": "integer",
+            "description": "Number of votes required to approve this step",
+            "format": "int32"
+          },
+          "requiredRejectVotes": {
+            "type": "integer",
+            "description": "Number of votes required to reject this step",
+            "format": "int32"
+          },
+          "excludedUsers": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "Set of user IDs excluded from participating in this step",
+            "items": {
+              "type": "string",
+              "description": "Set of user IDs excluded from participating in this step"
+            }
+          },
+          "excludedUserCustomFields": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "Set of user custom fields excluded from participating in this step",
+            "items": {
+              "type": "string",
+              "description": "Set of user custom fields excluded from participating in this step"
+            }
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          }
+        },
+        "description": "Represents a group step in the approval definition, detailing group actions, conditions, and vote requirements."
+      },
+      "IssueEmailDefinitionStep": {
+        "required": [
+          "action",
+          "fieldId",
+          "issueWatchersNotification",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is ISSUE_EMAIL_FIELD",
+            "default": "ISSUE_EMAIL_FIELD",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "Email value from work item field",
+            "readOnly": true
+          },
+          "fieldId": {
+            "type": "string",
+            "description": "Field ID associated with the work item email step"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action associated with the work item email step. Allowed values: APPROVAL, CONSENT, NOTIFICATION",
+            "default": "APPROVAL",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "startOn": {
+            "type": "string",
+            "description": "Defines when the step starts",
+            "enum": [
+              "APPROVAL",
+              "STEP"
+            ]
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "commentRequiredOnReject": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on rejection"
+          },
+          "commentRequiredOnApprove": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on approval"
+          },
+          "commentRequiredOnAbstain": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on abstain"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "default": "DISABLED",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          }
+        },
+        "description": "Represents an approval definition email step based on an work item field, detailing its type, actions, and conditions."
+      },
+      "IssueGroupDefinitionStep": {
+        "required": [
+          "action",
+          "fieldId",
+          "issueWatchersNotification",
+          "startOn",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is ISSUE_GROUP_FIELD",
+            "default": "ISSUE_GROUP_FIELD",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the group",
+            "readOnly": true
+          },
+          "fieldId": {
+            "type": "string",
+            "description": "Field ID associated with the work item group step"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action associated with the work item group step. Allowed values: APPROVAL, CONSENT, NOTIFICATION",
+            "default": "APPROVAL",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "startOn": {
+            "type": "string",
+            "description": "Defines when the step starts",
+            "enum": [
+              "APPROVAL",
+              "STEP"
+            ]
+          },
+          "requiredVotes": {
+            "type": "integer",
+            "description": "Number of votes required to approve this step",
+            "format": "int32"
+          },
+          "requiredRejectVotes": {
+            "type": "integer",
+            "description": "Number of votes required to reject this step",
+            "format": "int32"
+          },
+          "skipFromApprovalWhenEmpty": {
+            "type": "boolean",
+            "description": "Indicates if this step is skipped when no approvers are present"
+          },
+          "approvalCreatorExcluded": {
+            "type": "boolean",
+            "description": "Indicates if the approval creator is excluded from this step"
+          },
+          "excludedUserCustomFields": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "Set of user custom fields excluded from participating in this step",
+            "items": {
+              "type": "string",
+              "description": "Set of user custom fields excluded from participating in this step"
+            }
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "commentRequiredOnReject": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on rejection"
+          },
+          "commentRequiredOnApprove": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on approval"
+          },
+          "commentRequiredOnAbstain": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on abstain"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "default": "DISABLED",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          }
+        },
+        "description": "Represents an approval definition group step based on an work item field, detailing its type, actions, votes, and conditions."
+      },
+      "IssueUserDefinitionStep": {
+        "required": [
+          "action",
+          "fieldId",
+          "issueWatchersNotification",
+          "startOn",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is ISSUE_USER_FIELD",
+            "default": "ISSUE_USER_FIELD",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the user",
+            "readOnly": true
+          },
+          "fieldId": {
+            "type": "string",
+            "description": "Field ID associated with the work item user step"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action associated with the work item user step. Allowed values: APPROVAL, CONSENT, NOTIFICATION",
+            "default": "APPROVAL",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "startOn": {
+            "type": "string",
+            "description": "Defines when the step starts",
+            "enum": [
+              "APPROVAL",
+              "STEP"
+            ]
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "commentRequiredOnReject": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on rejection"
+          },
+          "commentRequiredOnApprove": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on approval"
+          },
+          "commentRequiredOnAbstain": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on abstain"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "default": "DISABLED",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "treatUsersAsGroup": {
+            "type": "boolean",
+            "description": "When enabled, all users from the field are treated as a single group step"
+          },
+          "dynamicUpdateEnabled": {
+            "type": "boolean",
+            "description": "When enabled, users are dynamically updated when the issue field changes while the step is active"
+          },
+          "requiredVotes": {
+            "type": "integer",
+            "description": "Number of votes required to approve this step (only used when treatUsersAsGroup is true)",
+            "format": "int32"
+          },
+          "requiredRejectVotes": {
+            "type": "integer",
+            "description": "Number of votes required to reject this step (only used when treatUsersAsGroup is true)",
+            "format": "int32"
+          },
+          "approvalCreatorExcluded": {
+            "type": "boolean",
+            "description": "Indicates if the approval creator is excluded from this step (only used when treatUsersAsGroup is true)"
+          },
+          "excludedUserCustomFields": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "Set of user custom fields excluded from participating in this step (only used when treatUsersAsGroup is true)",
+            "items": {
+              "type": "string",
+              "description": "Set of user custom fields excluded from participating in this step (only used when treatUsersAsGroup is true)"
+            }
+          },
+          "skipFromApprovalWhenEmpty": {
+            "type": "boolean",
+            "description": "Indicates if this step is skipped when no approvers are present (only used when treatUsersAsGroup is true)"
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          }
+        },
+        "description": "Represents an approval definition user step based on an work item field, detailing its type, actions, and conditions."
+      },
+      "UserDefinitionStep": {
+        "required": [
+          "action",
+          "issueWatchersNotification",
+          "name",
+          "type",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is USER",
+            "default": "USER",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "action": {
+            "type": "string",
+            "description": "Action available for the approver. Allowed values: APPROVAL, CONSENT, NOTIFICATION",
+            "default": "APPROVAL",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "userId": {
+            "type": "string",
+            "description": "User ID of the approver"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the user",
+            "readOnly": true
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "commentRequiredOnReject": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on rejection"
+          },
+          "commentRequiredOnApprove": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on approval"
+          },
+          "commentRequiredOnAbstain": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on abstain"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "default": "DISABLED",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          }
+        },
+        "description": "Represents a user step in the approval definition, containing details about the approver and step configuration."
+      },
+      "VoteDefinitionStep": {
+        "required": [
+          "action",
+          "groupId",
+          "groupName",
+          "name",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is VOTE",
+            "default": "VOTE",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "action": {
+            "type": "string",
+            "description": "Action available for the group members in this step. Allowed values: APPROVAL, CONSENT, NOTIFICATION",
+            "default": "APPROVAL",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "groupId": {
+            "type": "string",
+            "description": "ID of the group associated with this step"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Name of the group"
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the poll"
+          },
+          "moderatorId": {
+            "type": "string",
+            "description": "ID of the poll moderator"
+          },
+          "moderatorDisplayName": {
+            "type": "string",
+            "description": "Name of the poll moderator"
+          },
+          "pollType": {
+            "type": "string",
+            "description": "Poll type, which allowed value is SINGLE_CHOICE or MULTIPLE_CHOICE",
+            "enum": [
+              "SINGLE_CHOICE",
+              "MULTIPLE_CHOICE"
+            ]
+          },
+          "expiration": {
+            "type": "string",
+            "description": "Voting expiration",
+            "format": "date-time"
+          },
+          "votingOptions": {
+            "type": "array",
+            "description": "List of voting options",
+            "items": {
+              "$ref": "#/components/schemas/VotingOption"
+            }
+          },
+          "anonymizeResultsForJsmCustomers": {
+            "type": "boolean",
+            "description": "Indicates if voters' identities and vote timestamps will be hidden from the JSM customer view"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "default": "DISABLED",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          }
+        },
+        "description": "Represents a vote step in the approval definition, detailing the group voting process with actions, poll settings, options, and notifications."
+      },
+      "VotingOption": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "description": "List of voting options"
+      },
+      "WebhookDefinitionStep": {
+        "required": [
+          "action",
+          "httpMethod",
+          "issueWatchersNotification",
+          "name",
+          "requestUrlTemplate",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is HTTP",
+            "default": "HTTP",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the webhook step"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action associated with the webhook step. Allowed values: APPROVAL, CONSENT, NOTIFICATION",
+            "default": "NOTIFICATION",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "httpMethod": {
+            "type": "string",
+            "description": "HTTP method used in the webhook request",
+            "enum": [
+              "GET",
+              "HEAD",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE",
+              "OPTIONS",
+              "TRACE"
+            ]
+          },
+          "requestUrlTemplate": {
+            "type": "string",
+            "description": "Template for the webhook request URL"
+          },
+          "requestHeadersTemplate": {
+            "type": "string",
+            "description": "Template for the webhook request headers"
+          },
+          "requestBodyTemplate": {
+            "type": "string",
+            "description": "Template for the webhook request body"
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "default": "DISABLED",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          }
+        },
+        "description": "Represents a webhook step in the approval process, containing details about the HTTP request, response, and status."
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The URL where the error occurred."
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "The timestamp when the error occurred.",
+            "format": "date-time"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "A detailed message describing the error."
+          }
+        },
+        "description": "Error response model containing details about the error."
+      },
+      "ConditionRequest": {
+        "required": [
+          "evaluatorCallerOrigin",
+          "expression",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the condition."
+          },
+          "expression": {
+            "type": "string",
+            "description": "Jira expression defining the condition."
+          },
+          "evaluatorCallerOrigin": {
+            "type": "string",
+            "description": "Origin of the evaluator making the condition evaluation call.",
+            "enum": [
+              "CURRENT_USER",
+              "SELECTED_USER",
+              "ISSUE_FIELD_USER"
+            ]
+          },
+          "userId": {
+            "type": "string",
+            "description": "User ID associated with the condition, if applicable."
+          },
+          "fieldId": {
+            "type": "string",
+            "description": "Work item field ID associated with the condition, if applicable."
+          },
+          "collectionId": {
+            "type": "string",
+            "description": "Project ID associated with the condition, if applicable."
+          },
+          "customizedFailMassage": {
+            "type": "string",
+            "description": "Customized failure message displayed if the condition fails."
+          }
+        },
+        "description": "Request object for creating and updating a condition"
+      },
+      "Condition": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the condition."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the condition."
+          },
+          "expression": {
+            "type": "string",
+            "description": "Jira expression defining the condition."
+          },
+          "evaluatorCallerOrigin": {
+            "type": "string",
+            "description": "Origin of the evaluator making the condition evaluation call."
+          },
+          "userId": {
+            "type": "string",
+            "description": "User ID associated with the condition, if applicable."
+          },
+          "fieldId": {
+            "type": "string",
+            "description": "Work item field ID associated with the condition, if applicable."
+          },
+          "collectionId": {
+            "type": "string",
+            "description": "Project ID associated with the condition, if applicable."
+          },
+          "customizedFailMassage": {
+            "type": "string",
+            "description": "Customized failure message displayed if the condition fails."
+          },
+          "createdDate": {
+            "type": "string",
+            "description": "Date when the condition was created."
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "User who created the condition."
+          },
+          "archivedBy": {
+            "type": "string",
+            "description": "User who archived the condition, if applicable."
+          }
+        },
+        "description": "Represents a condition used in evaluation processes."
+      },
+      "CreateApprovalRequest": {
+        "required": [
+          "definitionId",
+          "referenceId"
+        ],
+        "type": "object",
+        "properties": {
+          "referenceId": {
+            "type": "string",
+            "description": "Work item ID for the approval"
+          },
+          "definitionId": {
+            "type": "string",
+            "description": "Definition ID of the approval"
+          },
+          "name": {
+            "type": "string",
+            "description": "Optional name of the approval"
+          },
+          "expiration": {
+            "type": "string",
+            "description": "Expiration time for the approval",
+            "format": "date-time"
+          },
+          "startedByJSMCustomer": {
+            "type": "boolean",
+            "description": "Flag indicating if the approval was started by a JSM customer. Active in the Jira app when the 'Available for JSM customers' option is checked at the definition level."
+          },
+          "automaticRemindersEnabledElement": {
+            "type": "boolean",
+            "description": "Flag to enable automatic reminders. Works only when activated at the global and definition level."
+          },
+          "automaticRemindersIntervalCountElement": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "Interval count for automatic reminders",
+            "format": "int32"
+          },
+          "automaticRemindersIntervalUnit": {
+            "type": "string",
+            "description": "Unit of time for automatic reminder intervals",
+            "enum": [
+              "HOUR",
+              "DAY",
+              "WEEK"
+            ]
+          },
+          "abstainActionEnabled": {
+            "type": "boolean",
+            "description": "Flag to enable abstain action. Works only when activated at the global and definition level."
+          },
+          "userId": {
+            "type": "string",
+            "description": "User ID used to change approval path creation operation performer origin. Option must be activated in API Key."
+          }
+        },
+        "description": "Request object for creating an approval"
+      },
+      "Approval": {
+        "required": [
+          "automaticRemindersIntervalUnit",
+          "collectionId",
+          "definitionId",
+          "detailedStatus",
+          "id",
+          "name",
+          "referenceId",
+          "status",
+          "steps",
+          "version"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the approval"
+          },
+          "version": {
+            "type": "integer",
+            "description": "Version number of the approval. Increments when dynamic step updates modify the approval.",
+            "format": "int32"
+          },
+          "definitionId": {
+            "type": "string",
+            "description": "Definition ID associated with the approval"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the approval"
+          },
+          "collectionId": {
+            "type": "string",
+            "description": "Project ID associated with the approval."
+          },
+          "referenceId": {
+            "type": "string",
+            "description": "Work item ID associated with the approval"
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Step"
+            }
+          },
+          "successSteps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostStep"
+            }
+          },
+          "rejectionSteps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostStep"
+            }
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status of the approval",
+            "enum": [
+              "IN_PROGRESS",
+              "SUCCESS",
+              "FAIL"
+            ]
+          },
+          "detailedStatus": {
+            "type": "string",
+            "description": "Detailed status of the approval",
+            "enum": [
+              "ONGOING",
+              "APPROVED",
+              "REJECTED",
+              "ARCHIVED",
+              "EXPIRED",
+              "OUTDATED",
+              "NOT_ARCHIVED_AND_NOT_OUTDATED_AND_NOT_EXPIRED",
+              "ANY"
+            ]
+          },
+          "progress": {
+            "type": "integer",
+            "description": "Progress of the approval as a percentage",
+            "format": "int32"
+          },
+          "stepsCount": {
+            "type": "integer",
+            "description": "Total number of steps in the approval process",
+            "format": "int32"
+          },
+          "stepsDone": {
+            "type": "integer",
+            "description": "Number of steps completed in the approval process",
+            "format": "int32"
+          },
+          "archivedDate": {
+            "type": "string",
+            "description": "Date and time the approval was archived",
+            "format": "date-time"
+          },
+          "expirationDate": {
+            "type": "string",
+            "description": "Expiration date of the approval",
+            "format": "date-time"
+          },
+          "availableForJSMCustomers": {
+            "type": "boolean",
+            "description": "Indicates if the approval is viewable by JSM customers"
+          },
+          "canBeStartedByJSMCustomers": {
+            "type": "boolean",
+            "description": "Indicates if the approval can be started by JSM customers"
+          },
+          "automaticRemindersEnabled": {
+            "type": "boolean",
+            "description": "Indicates if automatic reminders are enabled"
+          },
+          "automaticRemindersIntervalCount": {
+            "type": "integer",
+            "description": "Interval count for automatic reminders",
+            "format": "int32"
+          },
+          "automaticRemindersIntervalUnit": {
+            "type": "string",
+            "description": "Unit for the automatic reminder interval",
+            "enum": [
+              "HOUR",
+              "DAY",
+              "WEEK"
+            ]
+          },
+          "abstainActionEnabled": {
+            "type": "boolean",
+            "description": "Indicates if the abstain action is enabled"
+          },
+          "jsmPublicCommentsEnabled": {
+            "type": "boolean",
+            "description": "Indicates if the Approval Path comments are visible to JSM customers."
+          }
+        },
+        "description": "Represents an approval with details about its steps, status, and configuration."
+      },
+      "AutomationStep": {
+        "required": [
+          "action",
+          "id",
+          "status",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the automation step"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is AUTOMATION",
+            "default": "AUTOMATION",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status of the automation step",
+            "enum": [
+              "WAIT",
+              "ACTIVE",
+              "SUCCESS",
+              "FAIL"
+            ]
+          },
+          "responseTime": {
+            "type": "string",
+            "description": "Date of the response for this step",
+            "format": "date-time"
+          },
+          "responseDate": {
+            "type": "string",
+            "description": "Date and time of the response for this step",
+            "format": "date-time"
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "automationAction": {
+            "$ref": "#/components/schemas/AutomationAction"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action available for the approver",
+            "default": "NOTIFICATION",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message, if any, generated during this step"
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          }
+        },
+        "description": "Represents an automation step in the approval process, detailing its status, conditions, and automation actions."
+      },
+      "EmailStep": {
+        "required": [
+          "action",
+          "email",
+          "id",
+          "issueWatchersNotification",
+          "status",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the email step"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is EMAIL",
+            "default": "EMAIL",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status of the email step",
+            "enum": [
+              "WAIT",
+              "ACTIVE",
+              "SUCCESS",
+              "FAIL"
+            ]
+          },
+          "decisionDate": {
+            "type": "string",
+            "description": "Date and time when the decision was made for this step",
+            "format": "date-time"
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "comment": {
+            "type": "string",
+            "description": "Comment provided for the step"
+          },
+          "commentRequiredOnReject": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on rejection"
+          },
+          "commentRequiredOnApprove": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on approval"
+          },
+          "commentRequiredOnAbstain": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on abstain"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address associated with this step"
+          },
+          "issueFieldName": {
+            "type": "string",
+            "description": "Work item field name related to this step"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action available for the approver",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "description": "Decision made by the user",
+            "enum": [
+              "NONE",
+              "STARTED",
+              "ACCEPTED",
+              "REJECTED",
+              "ABSTAINED",
+              "VOTED"
+            ]
+          }
+        },
+        "description": "Represents an email step in the approval process, containing details about the step status, conditions, and actions."
+      },
+      "GroupEntry": {
+        "required": [
+          "accountId",
+          "decision",
+          "decisionDate",
+          "lastUpdated"
+        ],
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID of the user in the group"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Display name of the user in the group"
+          },
+          "decision": {
+            "type": "string",
+            "description": "Decision made by the user",
+            "enum": [
+              "NONE",
+              "STARTED",
+              "ACCEPTED",
+              "REJECTED",
+              "ABSTAINED",
+              "VOTED"
+            ]
+          },
+          "decisionDate": {
+            "type": "string",
+            "description": "Date and time of the user's decision",
+            "format": "date-time"
+          },
+          "comment": {
+            "type": "string",
+            "description": "Comment provided by the user"
+          },
+          "delegateId": {
+            "type": "string",
+            "description": "Delegate ID if the action was delegated"
+          },
+          "delegateDisplayName": {
+            "type": "string",
+            "description": "Delegate display name if the step was delegated"
+          },
+          "delegationId": {
+            "type": "integer",
+            "description": "Delegation ID if the action was delegated",
+            "format": "int64"
+          }
+        },
+        "description": "Represents an entry in a group step, detailing user actions and decisions."
+      },
+      "GroupStep": {
+        "required": [
+          "action",
+          "groupId",
+          "id",
+          "issueWatchersNotification",
+          "status",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the group step"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is GROUP",
+            "default": "GROUP",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status of the group step",
+            "enum": [
+              "WAIT",
+              "ACTIVE",
+              "SUCCESS",
+              "FAIL"
+            ]
+          },
+          "decisionDate": {
+            "type": "string",
+            "description": "Date and time of the decision for this step",
+            "format": "date-time"
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "commentRequiredOnReject": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on rejection"
+          },
+          "commentRequiredOnApprove": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on approval"
+          },
+          "commentRequiredOnAbstain": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on abstain"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          },
+          "groupId": {
+            "type": "string",
+            "description": "ID of the group associated with this step"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Display name of the group"
+          },
+          "issueFieldName": {
+            "type": "string",
+            "description": "Work item field name related to this group step"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action available for the group members in this step",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "requiredVotes": {
+            "type": "integer",
+            "description": "Number of votes required to approve this step",
+            "format": "int32"
+          },
+          "requiredRejectVotes": {
+            "type": "integer",
+            "description": "Number of votes required to reject this step",
+            "format": "int32"
+          },
+          "entries": {
+            "type": "array",
+            "description": "List of group users associated with this step",
+            "items": {
+              "$ref": "#/components/schemas/GroupEntry"
+            }
+          },
+          "excludedUsers": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "Set of user IDs excluded from participating in this step",
+            "items": {
+              "type": "string",
+              "description": "Set of user IDs excluded from participating in this step"
+            }
+          }
+        },
+        "description": "Represents a group step in the approval process, detailing group-related actions, status, and conditions."
+      },
+      "IssueEmailStep": {
+        "required": [
+          "action",
+          "fieldId",
+          "id",
+          "issueWatchersNotification",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the work item email step"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT",
+            "default": "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "fieldId": {
+            "type": "string",
+            "description": "Field ID associated with the work item email step"
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action associated with the work item email step",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "commentRequiredOnReject": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on rejection"
+          },
+          "commentRequiredOnApprove": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on approval"
+          },
+          "commentRequiredOnAbstain": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on abstain"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          }
+        },
+        "description": "Represents a email step that resolves email-related fields within an work item at initialization."
+      },
+      "IssueGroupStep": {
+        "required": [
+          "action",
+          "fieldId",
+          "id",
+          "issueWatchersNotification",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the work item group step"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+            "default": "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "fieldId": {
+            "type": "string",
+            "description": "Field ID associated with the work item group step"
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action associated with the work item group step",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "commentRequiredOnReject": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on rejection"
+          },
+          "commentRequiredOnApprove": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on approval"
+          },
+          "commentRequiredOnAbstain": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on abstain"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          },
+          "requiredVotes": {
+            "type": "integer",
+            "description": "Number of votes required to approve this step",
+            "format": "int32"
+          },
+          "requiredRejectVotes": {
+            "type": "integer",
+            "description": "Number of votes required to reject this step",
+            "format": "int32"
+          },
+          "excludedUsers": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "Set of user IDs excluded from participating in this step",
+            "items": {
+              "type": "string",
+              "description": "Set of user IDs excluded from participating in this step"
+            }
+          },
+          "skipFromApprovalWhenEmpty": {
+            "type": "boolean",
+            "description": "Indicates if this step is skipped when no approvers are present"
+          }
+        },
+        "description": "Represents a group step that resolves group-related fields within an work item at initialization."
+      },
+      "IssueUserStep": {
+        "required": [
+          "action",
+          "fieldId",
+          "id",
+          "issueWatchersNotification",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the work item user step"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+            "default": "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "fieldId": {
+            "type": "string",
+            "description": "Field ID associated with the work item user step"
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action associated with the work item user step",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "commentRequiredOnReject": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on rejection"
+          },
+          "commentRequiredOnApprove": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on approval"
+          },
+          "commentRequiredOnAbstain": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on abstain"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          }
+        },
+        "description": "Represents a step that resolves user-related fields within an work item at initialization."
+      },
+      "PostStep": {
+        "type": "object",
+        "description": "Optional list of rejection steps in the approval process",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AutomationStep"
+          },
+          {
+            "$ref": "#/components/schemas/WebhookStep"
+          }
+        ]
+      },
+      "Step": {
+        "type": "object",
+        "description": "List of steps in the approval process",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UserStep"
+          },
+          {
+            "$ref": "#/components/schemas/GroupStep"
+          },
+          {
+            "$ref": "#/components/schemas/EmailStep"
+          },
+          {
+            "$ref": "#/components/schemas/AutomationStep"
+          },
+          {
+            "$ref": "#/components/schemas/WebhookStep"
+          },
+          {
+            "$ref": "#/components/schemas/IssueUserStep"
+          },
+          {
+            "$ref": "#/components/schemas/IssueGroupStep"
+          },
+          {
+            "$ref": "#/components/schemas/IssueEmailStep"
+          }
+        ]
+      },
+      "UserStep": {
+        "required": [
+          "action",
+          "id",
+          "issueWatchersNotification",
+          "status",
+          "type",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the user step"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is USER",
+            "default": "USER",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status of the user step",
+            "enum": [
+              "WAIT",
+              "ACTIVE",
+              "SUCCESS",
+              "FAIL"
+            ]
+          },
+          "decisionDate": {
+            "type": "string",
+            "description": "Date and time of the user's decision",
+            "format": "date-time"
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "comment": {
+            "type": "string",
+            "description": "Comment provided by the user during the step"
+          },
+          "commentRequiredOnReject": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on rejection"
+          },
+          "commentRequiredOnApprove": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on approval"
+          },
+          "commentRequiredOnAbstain": {
+            "type": "boolean",
+            "description": "Indicates if a comment is required on abstain"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "string",
+            "description": "User ID of the approver"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "User name of the approver"
+          },
+          "issueFieldName": {
+            "type": "string",
+            "description": "Work item field name related to this step"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action available for the approver",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "description": "Decision made by the user during the step",
+            "enum": [
+              "NONE",
+              "STARTED",
+              "ACCEPTED",
+              "REJECTED",
+              "ABSTAINED",
+              "VOTED"
+            ]
+          },
+          "delegateId": {
+            "type": "string",
+            "description": "Delegate ID if the step was delegated"
+          },
+          "delegateDisplayName": {
+            "type": "string",
+            "description": "Delegate display name if the step was delegated"
+          },
+          "delegationId": {
+            "type": "integer",
+            "description": "Delegation ID if the step was delegated",
+            "format": "int64"
+          }
+        },
+        "description": "Represents a user step in the approval process, with details about status, user, and actions."
+      },
+      "WebhookStep": {
+        "required": [
+          "action",
+          "httpMethod",
+          "id",
+          "issueWatchersNotification",
+          "name",
+          "requestUrlTemplate",
+          "status",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the webhook step"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of the step, which is HTTP",
+            "default": "HTTP",
+            "enum": [
+              "USER",
+              "GROUP",
+              "VOTE",
+              "EMAIL",
+              "AUTOMATION",
+              "HTTP",
+              "ISSUE_USER_FIELD",
+              "ISSUE_USER_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_GROUP_FIELD",
+              "ISSUE_GROUP_FIELD_RESOLVE_ON_INIT",
+              "ISSUE_EMAIL_FIELD",
+              "ISSUE_EMAIL_FIELD_RESOLVE_ON_INIT"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status of the webhook step",
+            "enum": [
+              "WAIT",
+              "ACTIVE",
+              "SUCCESS",
+              "FAIL"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the webhook step"
+          },
+          "parallelGroupNumber": {
+            "type": "integer",
+            "description": "Parallel group number, if applicable",
+            "format": "int32"
+          },
+          "comment": {
+            "type": "string",
+            "description": "Comment provided for the webhook step"
+          },
+          "issueWatchersNotification": {
+            "type": "string",
+            "description": "Notification settings for work item watchers during the step",
+            "enum": [
+              "ENABLED",
+              "DISABLED"
+            ]
+          },
+          "conditionId": {
+            "type": "integer",
+            "description": "Unique identifier of the step condition",
+            "format": "int32"
+          },
+          "httpMethod": {
+            "type": "string",
+            "description": "HTTP method used in the webhook request",
+            "enum": [
+              "GET",
+              "HEAD",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE",
+              "OPTIONS",
+              "TRACE"
+            ]
+          },
+          "requestUrlTemplate": {
+            "type": "string",
+            "description": "Template for the webhook request URL"
+          },
+          "requestHeadersTemplate": {
+            "type": "string",
+            "description": "Template for the webhook request headers"
+          },
+          "requestBodyTemplate": {
+            "type": "string",
+            "description": "Template for the webhook request body"
+          },
+          "requestTime": {
+            "type": "string",
+            "description": "Time when the webhook request was sent",
+            "format": "date-time"
+          },
+          "responseTime": {
+            "type": "string",
+            "description": "Time when the webhook response was received",
+            "format": "date-time"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action associated with the webhook step",
+            "enum": [
+              "STARTED",
+              "APPROVAL",
+              "CONSENT",
+              "NOTIFICATION"
+            ]
+          },
+          "responseDate": {
+            "type": "string",
+            "description": "Date and time of the webhook response",
+            "format": "date-time"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message, if any, generated during the webhook step"
+          },
+          "httpStatusCode": {
+            "type": "integer",
+            "description": "HTTP status code of the webhook response",
+            "format": "int32"
+          }
+        },
+        "description": "Represents a webhook step in the approval process, containing details about the HTTP request, response, and status."
+      },
+      "DefinitionListResult": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Definition"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total number of definitions available",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "description": "Offset of the current page",
+            "format": "int32"
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Limit of items per page",
+            "format": "int32"
+          }
+        },
+        "description": "A paginated list of definitions."
+      },
+      "ConditionListResult": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Condition"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total number of conditions available",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "description": "Offset of the current page",
+            "format": "int32"
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Limit of items per page",
+            "format": "int32"
+          }
+        },
+        "description": "A paginated list of conditions."
+      },
+      "ApprovalListResult": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Approval"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total number of approvals available",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "description": "Offset of the current page",
+            "format": "int32"
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Limit of items per page",
+            "format": "int32"
+          }
+        },
+        "description": "A paginated list of approvals."
+      }
+    }
+  }
+}

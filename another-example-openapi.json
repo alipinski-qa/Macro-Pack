@@ -1,0 +1,99 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Document Management API",
+    "version": "1.0.0"
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "DocumentMeta": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "filename": { "type": "string" },
+          "uploadedAt": { "type": "string", "format": "date-time" },
+          "sizeBytes": { "type": "integer" },
+          "mimeType": { "type": "string" }
+        }
+      }
+    }
+  },
+  "security": [{ "BearerAuth": [] }],
+  "paths": {
+    "/documents": {
+      "get": {
+        "summary": "List documents",
+        "operationId": "listDocuments",
+        "parameters": [
+          { "name": "folder", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/DocumentMeta" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Upload a document",
+        "operationId": "uploadDocument",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["file"],
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "folder": { "type": "string" },
+                  "description": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Uploaded" },
+          "413": { "description": "File too large" }
+        }
+      }
+    },
+    "/documents/{id}/download": {
+      "get": {
+        "summary": "Download document",
+        "operationId": "downloadDocument",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "File stream",
+            "content": {
+              "application/octet-stream": {
+                "schema": { "type": "string", "format": "binary" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

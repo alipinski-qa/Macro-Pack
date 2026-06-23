@@ -1,0 +1,173 @@
+swagger: "2.0"
+info:
+  title: HR Platform API
+  version: "1.5.0"
+  description: Employee, department, and payroll management.
+host: api.hr.example.com
+basePath: /api/v1
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+
+definitions:
+  Address:
+    type: object
+    properties:
+      street: { type: string }
+      city: { type: string }
+      country: { type: string }
+      postalCode: { type: string }
+
+  ContactInfo:
+    type: object
+    properties:
+      email: { type: string, format: email }
+      phone: { type: string }
+      address:
+        $ref: "#/definitions/Address"
+
+  Department:
+    type: object
+    properties:
+      id: { type: string }
+      name: { type: string }
+      costCenter: { type: string }
+
+  PayGrade:
+    type: object
+    properties:
+      level: { type: string, enum: [junior, mid, senior, lead, principal] }
+      baseSalary: { type: number }
+      currency: { type: string }
+      bonus: { type: number }
+
+  Employee:
+    type: object
+    properties:
+      id: { type: string }
+      firstName: { type: string }
+      lastName: { type: string }
+      contact:
+        $ref: "#/definitions/ContactInfo"
+      department:
+        $ref: "#/definitions/Department"
+      payGrade:
+        $ref: "#/definitions/PayGrade"
+      hiredAt: { type: string, format: date }
+      active: { type: boolean }
+
+  EmployeeInput:
+    type: object
+    required: [firstName, lastName, departmentId]
+    properties:
+      firstName: { type: string }
+      lastName: { type: string }
+      departmentId: { type: string }
+      contact:
+        $ref: "#/definitions/ContactInfo"
+      payGrade:
+        $ref: "#/definitions/PayGrade"
+
+  Error:
+    type: object
+    properties:
+      code: { type: integer }
+      message: { type: string }
+
+paths:
+  /employees:
+    get:
+      summary: List employees
+      operationId: listEmployees
+      parameters:
+        - name: departmentId
+          in: query
+          type: string
+        - name: active
+          in: query
+          type: boolean
+          default: true
+        - name: page
+          in: query
+          type: integer
+          default: 1
+        - name: pageSize
+          in: query
+          type: integer
+          default: 50
+      responses:
+        200:
+          description: Employee list
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Employee"
+        400:
+          description: Bad request
+          schema: { $ref: "#/definitions/Error" }
+        500:
+          description: Server error
+          schema: { $ref: "#/definitions/Error" }
+    post:
+      summary: Create employee
+      operationId: createEmployee
+      parameters:
+        - in: body
+          name: body
+          schema: { $ref: "#/definitions/EmployeeInput" }
+      responses:
+        201:
+          description: Created
+          schema: { $ref: "#/definitions/Employee" }
+        409:
+          description: Conflict (duplicate)
+          schema: { $ref: "#/definitions/Error" }
+
+  /employees/{id}:
+    get:
+      summary: Get employee
+      operationId: getEmployee
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Employee
+          schema: { $ref: "#/definitions/Employee" }
+        404:
+          description: Not found
+          schema: { $ref: "#/definitions/Error" }
+    patch:
+      summary: Update employee
+      operationId: updateEmployee
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - in: body
+          name: body
+          schema: { $ref: "#/definitions/EmployeeInput" }
+      responses:
+        200:
+          description: Updated
+          schema: { $ref: "#/definitions/Employee" }
+        404:
+          description: Not found
+
+  /departments:
+    get:
+      summary: List departments
+      operationId: listDepartments
+      responses:
+        200:
+          description: Departments
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Department"
